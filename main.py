@@ -17,7 +17,7 @@ def get_user():
     print("Opened database successfully")
     cur = conn.cursor()  # creating a cursor
 
-    if request.method == "POST":
+    if request.method == "GET":
 
         # SELECT "userId", username, "firstName", "middleName", "lastName", "DOB", "mobileNo", "createdBy",
         # "createdDate", "updatedBy", "updatedDate" FROM dbo."User";
@@ -25,7 +25,7 @@ def get_user():
         rows = cur.fetchall()
         conn.close()
         return rows
-    elif request.method == "GET":
+    elif request.method == "POST":
         # INSERT INTO dbo."User"( "userId", username, "firstName", "middleName", "lastName", "DOB", "mobileNo",
         # "createdBy", "createdDate", "updatedBy", "updatedDate") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
         cur.execute('''INSERT INTO dbo."User"("userId",username, "firstName", "middleName", 
