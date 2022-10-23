@@ -1,18 +1,15 @@
 import uuid
 from datetime import datetime
-
-import psycopg2
 from flask import request
-from constants.constants import databaseName, dbUser, dbPassword, dbHost, dbPort, adminUserID
+from constants.constants import  adminUserID
+from util.utils import get_db_connection
 
 
 def get_users():
-    conn = psycopg2.connect(database=databaseName, user=dbUser, password=dbPassword,
-                            host=dbHost, port=dbPort)
+    conn = get_db_connection()
     cur = conn.cursor()  # creating a cursor
 
     if request.method == "GET":
-
         cur.execute('''SELECT "userId", username, "firstName", "middleName", "lastName", "DOB",
         "mobileNo", "createdBy",
         "createdDate", "updatedBy", "updatedDate" FROM dbo."User";''')
@@ -22,8 +19,7 @@ def get_users():
 
 
 def create_user(data: dict):
-    conn = psycopg2.connect(database=databaseName, user=dbUser, password=dbPassword,
-                            host=dbHost, port=dbPort)
+    conn = get_db_connection()
     cur = conn.cursor()  # creating a cursor
 
     # INSERT INTO dbo."User"( "userId", username, "firstName", "middleName", "lastName", "DOB", "mobileNo",
@@ -41,8 +37,7 @@ def create_user(data: dict):
 
 
 def delete_user(data: dict):
-    conn = psycopg2.connect(database=databaseName, user=dbUser, password=dbPassword,
-                            host=dbHost, port=dbPort)
+    conn = get_db_connection()
     cur = conn.cursor()  # creating a cursor
 
     # DELETE FROM dbo."User"
