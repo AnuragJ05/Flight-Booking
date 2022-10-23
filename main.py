@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 # from util import *
 import util.userUtils
+from util.flightUtils import get_flight_details
 from util.utils import insert_new_user, get_db_connection, check_passwd
 
 app = Flask(__name__)
@@ -38,6 +39,16 @@ def user():
         }
         """
         data = util.userUtils.delete_user(data=request.json)
+        return data
+
+
+@app.route('/flight', methods=["Get"])
+def flight():
+    if request.method == "GET":
+        """
+        Get : http://localhost:5050/flight
+        """
+        data = get_flight_details()
         return data
 
 
@@ -92,4 +103,4 @@ def register():
 
 if __name__ == '__main__':
     # Default 127.0.0.1:5000
-    app.run(host="127.0.0.1",port=5050)
+    app.run(host="127.0.0.1", port=5050)
