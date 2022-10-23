@@ -12,9 +12,8 @@ def get_UserAddress():
     cur = conn.cursor()  # creating a cursor
 
     if request.method == "GET":
-        # SELECT "addressId", "userId", "addressLine1", "addressLine2", city, state, "pinCode", "createdBy",
-        # "createdDate", "updatedBy", "updatedDate" FROM dbo."UserAddress";
-        cur.execute('SELECT * FROM dbo."UserAddress"')
+        cur.execute('''SELECT "addressId", "userId", "addressLine1", "addressLine2", city, state, "pinCode", 
+        "createdBy", "createdDate", "updatedBy", "updatedDate" FROM dbo."UserAddress";''')
         rows = cur.fetchall()
         conn.close()
         return rows

@@ -12,10 +12,10 @@ def get_BookingItenrary():
     cur = conn.cursor()  # creating a cursor
 
     if request.method == "GET":
-        # SELECT "itenraryId", "bookingId", "PNR", "from", "to", "travelDate", "departureTime", "arrivalTime",
-        # "journeyType", "travelClass", "airlineVendor", "flightNo", "flightType", "baseFare" FROM
-        # dbo."BookingItenrary";
-        cur.execute('SELECT * FROM dbo."BookingItenrary"')
+
+        cur.execute('''SELECT "itenraryId", "bookingId", "PNR", "from", "to", "travelDate", "departureTime", 
+        "arrivalTime", "journeyType", "travelClass", "airlineVendor", "flightNo", "flightType", "baseFare" FROM
+        dbo."BookingItenrary";''')
         rows = cur.fetchall()
         conn.close()
         return rows

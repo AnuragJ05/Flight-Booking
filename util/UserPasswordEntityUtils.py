@@ -12,9 +12,9 @@ def get_UserPasswordEntity():
     cur = conn.cursor()  # creating a cursor
 
     if request.method == "GET":
-        # SELECT "userPasswordId", "userId", "passwordHash", "otpSecret", "createdDate"
-        # 	FROM dbo."UserPasswordEntity";
-        cur.execute('SELECT * FROM dbo."UserPasswordEntity"')
+
+        cur.execute('''SELECT "userPasswordId", "userId", "passwordHash", "otpSecret", 
+        "createdDate" FROM dbo."UserPasswordEntity";''')
         rows = cur.fetchall()
         conn.close()
         return rows

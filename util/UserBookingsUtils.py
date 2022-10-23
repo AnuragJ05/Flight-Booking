@@ -12,9 +12,7 @@ def get_UserBookings():
     cur = conn.cursor()  # creating a cursor
 
     if request.method == "GET":
-        # SELECT "bookingId", userid, "bookingDate", "bookingStatus"
-        # 	FROM dbo."UserBookings";
-        cur.execute('SELECT * FROM dbo."UserBookings"')
+        cur.execute('''SELECT "bookingId", userid, "bookingDate", "bookingStatus" FROM dbo."UserBookings";''')
         rows = cur.fetchall()
         conn.close()
         return rows

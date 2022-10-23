@@ -12,9 +12,8 @@ def get_UserBookingTransaction():
     cur = conn.cursor()  # creating a cursor
 
     if request.method == "GET":
-        # SELECT "bookingId", "transactionId", "totalAmount", "CGST", "SGST", "serviceCharge", "grantTotal",
-        # promocode, "promocodeAmount", "paymentType" FROM dbo."UserBookingTransaction";
-        cur.execute('SELECT * FROM dbo."UserBookingTransaction"')
+        cur.execute('''SELECT "bookingId", "transactionId", "totalAmount", "CGST", "SGST", "serviceCharge", 
+        "grantTotal", promocode, "promocodeAmount", "paymentType" FROM dbo."UserBookingTransaction";''')
         rows = cur.fetchall()
         conn.close()
         return rows

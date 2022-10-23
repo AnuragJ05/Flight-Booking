@@ -1,7 +1,14 @@
 from flask import Flask, request, jsonify
-# from util import *
 import util.userUtils
+from util.UserAddressUtils import get_UserAddress
+from util.UserBookingPassengerUtils import get_UserBookingPassenger
+from util.UserBookingTransactionUtils import get_UserBookingTransaction
+from util.UserBookingsUtils import get_UserBookings
+from util.UserPassengerDetailsUtils import get_UserPassengerDetails
+from util.UserPasswordEntityUtils import get_UserPasswordEntity
+from util.bookingItenraryUtils import get_BookingItenrary
 from util.flightUtils import get_flight_details
+from util.paymentUtils import get_Payment
 from util.utils import insert_new_user, get_db_connection, check_passwd
 
 app = Flask(__name__)
@@ -40,6 +47,86 @@ def user():
         """
         data = util.userUtils.delete_user(data=request.json)
         return data
+
+
+@app.route('/payment', methods=["Get"])
+def payment():
+    if request.method == "GET":
+        """
+        Get : http://localhost:5050/payment
+        """
+        rows = get_Payment()
+        return rows
+
+
+@app.route('/bookingItenrary', methods=["Get"])
+def booking_itenrary():
+    if request.method == "GET":
+        """
+        Get : http://localhost:5050/bookingItenrary
+        """
+        rows = get_BookingItenrary()
+        return rows
+
+
+@app.route('/userAddress', methods=["Get"])
+def user_address():
+    if request.method == "GET":
+        """
+        Get : http://localhost:5050/userAddress
+        """
+        rows = get_UserAddress()
+        return rows
+
+
+@app.route('/userBookingPassenger', methods=["Get"])
+def user_booking_passenger():
+    if request.method == "GET":
+        """
+        Get : http://localhost:5050/userBookingPassenger
+        """
+        rows = get_UserBookingPassenger()
+        return rows
+
+
+@app.route('/userBookings', methods=["Get"])
+def user_bookings():
+    if request.method == "GET":
+        """
+        Get : http://localhost:5050/userBookings
+        """
+        rows = get_UserBookings()
+        return rows
+
+
+@app.route('/userBookingTransaction', methods=["Get"])
+def user_booking_transaction():
+    if request.method == "GET":
+        """
+        Get : http://localhost:5050/userBookingTransaction
+        """
+        rows = get_UserBookingTransaction()
+        return rows
+
+
+@app.route('/userPassengerDetails', methods=["Get"])
+def user_passenger_details():
+    if request.method == "GET":
+        """
+        Get : http://localhost:5050/userPassengerDetails
+        """
+        rows = get_UserPassengerDetails()
+        return rows
+
+
+@app.route('/userPasswordEntity', methods=["Get"])
+def user_password_entity():
+    if request.method == "GET":
+        """
+        Get : http://localhost:5050/userPasswordEntity
+        """
+        rows = get_UserPasswordEntity()
+        return rows
 
 
 @app.route('/flight', methods=["Get"])

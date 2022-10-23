@@ -12,9 +12,10 @@ def get_users():
     cur = conn.cursor()  # creating a cursor
 
     if request.method == "GET":
-        # SELECT "userId", username, "firstName", "middleName", "lastName", "DOB", "mobileNo", "createdBy",
-        # "createdDate", "updatedBy", "updatedDate" FROM dbo."User";
-        cur.execute('SELECT * FROM dbo."User"')
+
+        cur.execute('''SELECT "userId", username, "firstName", "middleName", "lastName", "DOB",
+        "mobileNo", "createdBy",
+        "createdDate", "updatedBy", "updatedDate" FROM dbo."User";''')
         rows = cur.fetchall()
         conn.close()
         return rows

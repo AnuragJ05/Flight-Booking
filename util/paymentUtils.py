@@ -12,9 +12,8 @@ def get_Payment():
     cur = conn.cursor()  # creating a cursor
 
     if request.method == "GET":
-        # SELECT "transactionId", "flightId", "individualPaymentId", "baseFare", "convenienceFee"
-        # 	FROM dbo."Payment";
-        cur.execute('SELECT * FROM dbo."Payment"')
+        cur.execute('''SELECT "transactionId", "flightId", "individualPaymentId", "baseFare", "convenienceFee"
+        FROM dbo."Payment";''')
         rows = cur.fetchall()
         conn.close()
         return rows

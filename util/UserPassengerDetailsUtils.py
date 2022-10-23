@@ -12,9 +12,8 @@ def get_UserPassengerDetails():
     cur = conn.cursor()  # creating a cursor
 
     if request.method == "GET":
-        # SELECT "passengerId", userid, "firstName", "middleName", "lastName", "DOB", "mobileNo", "adhaarNo",
-        # "panCardNo" FROM dbo."UserPassengerDetails";
-        cur.execute('SELECT * FROM dbo."UserPassengerDetails"')
+        cur.execute('''SELECT "passengerId", userid, "firstName", "middleName", "lastName", "DOB", 
+        "mobileNo", "adhaarNo", "panCardNo" FROM dbo."UserPassengerDetails";''')
         rows = cur.fetchall()
         conn.close()
         return rows
