@@ -51,3 +51,7 @@ def delete_user(data: dict):
     conn.commit()
     conn.close()
     return {"Message": "{} user deleted".format(userName)}
+
+
+def update_user(data: dict):
+    pass
