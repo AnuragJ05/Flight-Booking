@@ -15,7 +15,7 @@ app = Flask(__name__)
 form_data = None
 
 
-@app.route('/user', methods=["Get", "Post", "DELETE"])
+@app.route('/user', methods=["Get", "Post","PUT", "DELETE"])
 def user():
     if request.method == "GET":
         """
@@ -37,6 +37,21 @@ def user():
         }
         """
         data = util.userUtils.create_user(data=request.json)
+        return data
+    elif request.method == "PUT":
+        """
+        PUT : http://localhost:5050/user
+        {   
+            "userId": "4df0939f-7b1b-4f54-b600-f80b190f954e",
+            "username": "test12345",
+            "firstName": "test2",
+            "middleName": "test2",
+            "lastName": "test2",
+            "DOB": "05/11/2000",
+            "mobileNo": "9699675302"
+        }
+        """
+        data = util.userUtils.update_user(data=request.json)
         return data
     elif request.method == "DELETE":
         """

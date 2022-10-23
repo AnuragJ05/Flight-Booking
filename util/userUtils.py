@@ -1,7 +1,7 @@
 import uuid
 from datetime import datetime
 from flask import request
-from constants.constants import  adminUserID
+from constants.constants import adminUserID
 from util.utils import get_db_connection
 
 
@@ -50,4 +50,18 @@ def delete_user(data: dict):
 
 
 def update_user(data: dict):
-    pass
+    conn = get_db_connection()
+    cur = conn.cursor()  # creating a cursor
+
+    if "userId" not in data:
+        return "userId not provided"
+
+    querylist = []
+    for key in data:
+        querylist.append("\"{}\"=\'{}\'".format(key, data[key]))
+    queryString = ",".join(querylist)
+    query = "UPDATE dbo.\"User\" \nSET {} where \"userId\"=\'{}\';".format(queryString, data["userId"])
+    cur.execute(query)
+    conn.commit()
+    conn.close()
+    return data
