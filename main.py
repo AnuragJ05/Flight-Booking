@@ -55,8 +55,7 @@ def user_login():
         if request.method == "POST" and "username" in request.data and "password" in request.data:
             user_name = request.data['username']
             passwd = request.data['password']
-            
-            check = check_passwd(user_name, )
+            check = check_passwd(user_name, passwd)
 
 
     except Exception as e:
