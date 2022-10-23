@@ -16,8 +16,16 @@ def get_db_connection():
     return conn
 
 
-def check_passwd(encryp_passwd, passwd):
+def get_password_from_db(user):
     try:
+        pass
+    except Exception as e:
+        print("Error in get_password_from_db {}".format(e))
+
+
+def check_passwd(user_name, passwd):
+    try:
+        encryp_passwd = get_password_from_db(user_name)
         if bcrypt.checkpw(encryp_passwd, passwd):
             return True
         else:

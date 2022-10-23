@@ -56,6 +56,7 @@ def user_login():
             user_name = request.data['username']
             passwd = request.data['password']
             
+            check = check_passwd(user_name, )
 
 
     except Exception as e:
