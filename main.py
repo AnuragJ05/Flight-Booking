@@ -1,6 +1,6 @@
 from flask import Flask, request
 
-from config.userConfig import get_users, create_user, delete_user
+from utils.userUtils import get_users, create_user, delete_user
 
 app = Flask(__name__)
 form_data = None
