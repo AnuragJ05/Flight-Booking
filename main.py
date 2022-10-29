@@ -80,10 +80,10 @@ def book_flight():
                 "to": "JFK",
                 "baseFare": 8000
             },
-            "passenger": {
+            "passenger": [{
                 "passengerId" : "cf093eed-27e9-46aa-a9c3-518dbc5892a3",
                 "seatNo" : "34B"
-            },
+            }],
             "payment" : {
                 "totalAmount" : 8000,
                 "CGST": 750,
@@ -113,9 +113,10 @@ def book_flight():
         create_BookingItenrary(bookingItenary_data)
 
         passenger_data = request.json["passenger"]
-        passenger_data["id"] = uuid.uuid4()
-        passenger_data["bookingId"] = bookingId
-        create_UserBookingPassenger(passenger_data)
+        for p_data in passenger_data:
+            p_data["id"] = uuid.uuid4()
+            p_data["bookingId"] = bookingId
+            create_UserBookingPassenger(p_data)
 
         payment_data = request.json["payment"]
         payment_data["bookingId"] = bookingId

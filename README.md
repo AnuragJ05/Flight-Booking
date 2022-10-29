@@ -85,10 +85,12 @@ request:
         "to": "JFK",
         "baseFare": 8000
     },
-    "passenger": {
-        "passengerId" : "cf093eed-27e9-46aa-a9c3-518dbc5892a3",
-        "seatNo" : "34B"
-    },
+    "passenger": [
+        {
+            "passengerId" : "cf093eed-27e9-46aa-a9c3-518dbc5892a3",
+            "seatNo" : "34B"
+        }
+    ],
     "payment" : {
         "totalAmount" : 8000,
         "CGST": 750,
