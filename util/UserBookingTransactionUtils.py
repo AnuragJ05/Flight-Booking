@@ -15,7 +15,22 @@ def get_UserBookingTransaction():
 
 
 def create_UserBookingTransaction(data: dict):
-    pass
+    conn = get_db_connection()
+    cur = conn.cursor()  # creating a cursor
+
+    # INSERT INTO dbo."UserBookingTransaction"( "bookingId", "transactionId", "totalAmount", "CGST", "SGST",
+    # "serviceCharge", "grantTotal", promocode, "promocodeAmount", "paymentType") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,
+    # ?);
+    cur.execute('''INSERT INTO dbo."UserBookingTransaction"(
+    "bookingId", "transactionId", "totalAmount", "CGST", "SGST", "serviceCharge", "grantTotal", 
+    promocode, "promocodeAmount", "paymentType")
+    VALUES (\'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\');
+            '''.format(data["bookingId"], data["transactionId"], data["totalAmount"], data["CGST"],
+                       data["SGST"],data["serviceCharge"],data["grantTotal"],data["promocode"],
+                       data["promocodeAmount"],data["paymentType"]))
+    conn.commit()
+    conn.close()
+    return data
 
 
 def delete_UserBookingTransaction(data: dict):

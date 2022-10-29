@@ -30,11 +30,9 @@ def create_BookingItenrary(data: dict):
                                data["to"], data["travelDate"], data["departureTime"], data["arrivalTime"],
                                data["journeyType"], data["travelClass"], data["airlineVendor"],
                                data["flightNo"], data["flightType"], data["baseFare"])
-    print("query = ",query)
     cur.execute(query)
     conn.commit()
     conn.close()
-    return data
 
 
 def delete_BookingItenrary(data: dict):

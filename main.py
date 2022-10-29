@@ -6,7 +6,7 @@ import util.userUtils
 from constants.constants import adminUserID
 from util.UserAddressUtils import get_UserAddress
 from util.UserBookingPassengerUtils import get_UserBookingPassenger, create_UserBookingPassenger
-from util.UserBookingTransactionUtils import get_UserBookingTransaction
+from util.UserBookingTransactionUtils import get_UserBookingTransaction, create_UserBookingTransaction
 from util.UserBookingsUtils import get_UserBookings, create_UserBookings
 from util.UserPassengerDetailsUtils import get_UserPassengerDetails, create_UserPassengerDetails
 from util.UserPasswordEntityUtils import get_UserPasswordEntity
@@ -83,11 +83,21 @@ def book_flight():
             "passenger": {
                 "passengerId" : "cf093eed-27e9-46aa-a9c3-518dbc5892a3",
                 "seatNo" : "34B"
+            },
+            "payment" : {
+                "totalAmount" : 8000,
+                "CGST": 750,
+                "SGST": 750,
+                "serviceCharge" : 1000,
+                "grantTotal" : 10500,
+                "promocode" : "NA",
+                "promocodeAmount" : 0,
+                "paymentType": "CASH"
             }
         }
         """
+
         bookingId = uuid.uuid4()
-        itenraryId = uuid.uuid4()
         bookingDate = datetime.today().strftime('%d/%m/%y')
         booking_data = {
             "bookingId": bookingId,
@@ -95,18 +105,22 @@ def book_flight():
             "bookingStatus": "Done",
             "userid": adminUserID
         }
+        create_UserBookings(booking_data)
 
         bookingItenary_data = request.json["flight"]
-        bookingItenary_data["itenraryId"] = itenraryId
+        bookingItenary_data["itenraryId"] = uuid.uuid4()
         bookingItenary_data["bookingId"] = bookingId
+        create_BookingItenrary(bookingItenary_data)
 
         passenger_data = request.json["passenger"]
         passenger_data["id"] = uuid.uuid4()
         passenger_data["bookingId"] = bookingId
+        create_UserBookingPassenger(passenger_data)
 
-        bookingResp = create_UserBookings(booking_data)
-        bookingItenaryResp = create_BookingItenrary(bookingItenary_data)
-        passengerResp = create_UserBookingPassenger(passenger_data)
+        payment_data = request.json["payment"]
+        payment_data["bookingId"] = bookingId
+        payment_data["transactionId"] = uuid.uuid4()
+        create_UserBookingTransaction(payment_data)
 
         return {"message": "booking successful!!"}
 

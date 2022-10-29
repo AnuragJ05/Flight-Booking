@@ -27,7 +27,6 @@ def create_UserBookingPassenger(data: dict):
     '''.format(data["id"], data["bookingId"], data["passengerId"], data["seatNo"]))
     conn.commit()
     conn.close()
-    return data
 
 
 def delete_UserBookingPassenger(data: dict):
