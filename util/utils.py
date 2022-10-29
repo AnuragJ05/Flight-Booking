@@ -55,9 +55,7 @@ def insert_new_user(data):
         cur.execute(insert_query)
         conn.commit()
 
-        p_data = {}
-        p_data["uid"] = uid
-        p_data["password"] = data["password"]
+        p_data = {"uid": uid, "password": data["password"]}
 
         check = insert_passwd(p_data)
 
