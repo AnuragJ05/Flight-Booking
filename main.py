@@ -5,10 +5,10 @@ from flask import Flask, request, jsonify
 import util.userUtils
 from constants.constants import adminUserID
 from util.UserAddressUtils import get_UserAddress
-from util.UserBookingPassengerUtils import get_UserBookingPassenger
+from util.UserBookingPassengerUtils import get_UserBookingPassenger, create_UserBookingPassenger
 from util.UserBookingTransactionUtils import get_UserBookingTransaction
 from util.UserBookingsUtils import get_UserBookings, create_UserBookings
-from util.UserPassengerDetailsUtils import get_UserPassengerDetails
+from util.UserPassengerDetailsUtils import get_UserPassengerDetails, create_UserPassengerDetails
 from util.UserPasswordEntityUtils import get_UserPasswordEntity
 from util.bookingItenraryUtils import get_BookingItenrary, create_BookingItenrary
 from util.flightUtils import get_flight_details
@@ -19,55 +19,6 @@ app = Flask(__name__)
 form_data = None
 
 
-@app.route('/user', methods=["Get", "Post", "PUT", "DELETE"])
-def user():
-    if request.method == "GET":
-        """
-        Get : http://localhost:5050/user
-        """
-        rows = util.userUtils.get_users()
-        return rows
-
-    elif request.method == "POST":
-        """
-        Post : http://localhost:5050/user
-        {
-            "username": "test1234",
-            "firstName": "test2",
-            "middleName": "test2",
-            "lastName": "test2",
-            "DOB": "05/11/2000",
-            "mobileNo": "0999675302"
-        }
-        """
-        data = util.userUtils.create_user(data=request.json)
-        return data
-    elif request.method == "PUT":
-        """
-        PUT : http://localhost:5050/user
-        {   
-            "userId": "4df0939f-7b1b-4f54-b600-f80b190f954e",
-            "username": "test12345",
-            "firstName": "test2",
-            "middleName": "test2",
-            "lastName": "test2",
-            "DOB": "05/11/2000",
-            "mobileNo": "9699675302"
-        }
-        """
-        data = util.userUtils.update_user(data=request.json)
-        return data
-    elif request.method == "DELETE":
-        """
-        Delete : http://localhost:5050/user
-        {
-            "username": "test1234"
-        }
-        """
-        data = util.userUtils.delete_user(data=request.json)
-        return data
-
-
 @app.route('/flight', methods=["Get"])
 def flight():
     if request.method == "GET":
@@ -76,6 +27,36 @@ def flight():
         """
         data = get_flight_details()
         return data
+
+
+@app.route('/passenger', methods=["Get", "Post", "PUT", "DELETE"])
+def passenger():
+    if request.method == "GET":
+        """
+        Get : http://localhost:5050/passenger
+        """
+        rows = get_UserPassengerDetails()
+        return rows
+
+    elif request.method == "POST":
+        """
+        Post : http://localhost:5050/passenger
+        {
+            "firstName": "test2",
+            "middleName": "test2",
+            "lastName": "test2",
+            "DOB": "05/11/2000",
+            "mobileNo": "0999675302",
+            "adhaarNo": 234582829191,
+            "panCardNo" : "BI97B7V"
+        }
+        """
+        data = request.json
+        data["passengerId"] = uuid.uuid4()
+        data["userid"] = adminUserID
+        resp = create_UserPassengerDetails(data=data)
+
+        return {"message": "passenger created successful!!"}
 
 
 @app.route('/book', methods=["Post"])
@@ -98,6 +79,10 @@ def book_flight():
                 "from": "GRU",
                 "to": "JFK",
                 "baseFare": 8000
+            },
+            "passenger": {
+                "passengerId" : "cf093eed-27e9-46aa-a9c3-518dbc5892a3",
+                "seatNo" : "34B"
             }
         }
         """
@@ -109,30 +94,21 @@ def book_flight():
             "bookingDate": bookingDate,
             "bookingStatus": "Done",
             "userid": adminUserID
-
         }
 
-        print("request.json = ", request.json)
         bookingItenary_data = request.json["flight"]
         bookingItenary_data["itenraryId"] = itenraryId
         bookingItenary_data["bookingId"] = bookingId
 
-        print("bookingItenary_data = ",bookingItenary_data)
+        passenger_data = request.json["passenger"]
+        passenger_data["id"] = uuid.uuid4()
+        passenger_data["bookingId"] = bookingId
+
         bookingResp = create_UserBookings(booking_data)
         bookingItenaryResp = create_BookingItenrary(bookingItenary_data)
+        passengerResp = create_UserBookingPassenger(passenger_data)
 
-
-        return {"message": "booking successfull!!"}
-
-
-@app.route('/home', methods=["Post"])
-def home():
-    pass
-
-
-@app.route('/', methods=["Post", "Get"])
-def index():
-    pass
+        return {"message": "booking successful!!"}
 
 
 @app.route("/login", methods=['POST'])
@@ -172,6 +148,66 @@ def register():
             return jsonify({"invalid_requst": True})
     except Exception as e:
         print("Error in register {}".format(e))
+
+
+# @app.route('/user', methods=["Get", "Post", "PUT", "DELETE"])
+# def user():
+#     if request.method == "GET":
+#         """
+#         Get : http://localhost:5050/user
+#         """
+#         rows = util.userUtils.get_users()
+#         return rows
+#
+#     elif request.method == "POST":
+#         """
+#         Post : http://localhost:5050/user
+#         {
+#             "username": "test1234",
+#             "firstName": "test2",
+#             "middleName": "test2",
+#             "lastName": "test2",
+#             "DOB": "05/11/2000",
+#             "mobileNo": "0999675302"
+#         }
+#         """
+#         data = util.userUtils.create_user(data=request.json)
+#         return data
+#     elif request.method == "PUT":
+#         """
+#         PUT : http://localhost:5050/user
+#         {
+#             "userId": "4df0939f-7b1b-4f54-b600-f80b190f954e",
+#             "username": "test12345",
+#             "firstName": "test2",
+#             "middleName": "test2",
+#             "lastName": "test2",
+#             "DOB": "05/11/2000",
+#             "mobileNo": "9699675302"
+#         }
+#         """
+#         data = util.userUtils.update_user(data=request.json)
+#         return data
+#     elif request.method == "DELETE":
+#         """
+#         Delete : http://localhost:5050/user
+#         {
+#             "username": "test1234"
+#         }
+#         """
+#         data = util.userUtils.delete_user(data=request.json)
+#         return data
+#
+
+
+@app.route('/home', methods=["Post"])
+def home():
+    pass
+
+
+@app.route('/', methods=["Post", "Get"])
+def index():
+    pass
 
 
 if __name__ == '__main__':

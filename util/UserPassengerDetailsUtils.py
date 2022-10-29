@@ -15,7 +15,20 @@ def get_UserPassengerDetails():
 
 
 def create_UserPassengerDetails(data: dict):
-    pass
+    conn = get_db_connection()
+    cur = conn.cursor()  # creating a cursor
+
+    # INSERT INTO dbo."UserPassengerDetails"(
+    # 	"passengerId", userid, "firstName", "middleName", "lastName", "DOB", "mobileNo", "adhaarNo", "panCardNo")
+    # 	VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+    cur.execute('''INSERT INTO dbo."UserPassengerDetails"(
+    "passengerId", userid, "firstName", "middleName", "lastName", "DOB", "mobileNo", "adhaarNo", "panCardNo")
+    VALUES (\'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\');
+              '''.format(data["passengerId"], data["userid"], data["firstName"], data["middleName"],
+                         data["lastName"], data["DOB"], data["mobileNo"], data["adhaarNo"], data["panCardNo"]))
+    conn.commit()
+    conn.close()
+    return data
 
 
 def delete_UserPassengerDetails(data: dict):
