@@ -1,12 +1,16 @@
+import uuid
+from datetime import datetime
+
 from flask import Flask, request, jsonify
 import util.userUtils
+from constants.constants import adminUserID
 from util.UserAddressUtils import get_UserAddress
 from util.UserBookingPassengerUtils import get_UserBookingPassenger
 from util.UserBookingTransactionUtils import get_UserBookingTransaction
-from util.UserBookingsUtils import get_UserBookings
+from util.UserBookingsUtils import get_UserBookings, create_UserBookings
 from util.UserPassengerDetailsUtils import get_UserPassengerDetails
 from util.UserPasswordEntityUtils import get_UserPasswordEntity
-from util.bookingItenraryUtils import get_BookingItenrary
+from util.bookingItenraryUtils import get_BookingItenrary, create_BookingItenrary
 from util.flightUtils import get_flight_details
 from util.paymentUtils import get_Payment
 from util.utils import insert_new_user, get_db_connection, check_passwd
@@ -15,7 +19,7 @@ app = Flask(__name__)
 form_data = None
 
 
-@app.route('/user', methods=["Get", "Post","PUT", "DELETE"])
+@app.route('/user', methods=["Get", "Post", "PUT", "DELETE"])
 def user():
     if request.method == "GET":
         """
@@ -72,6 +76,53 @@ def flight():
         """
         data = get_flight_details()
         return data
+
+
+@app.route('/book', methods=["Post"])
+def book_flight():
+    if request.method == "POST":
+        """
+        post: http://localhost:5050/book
+        {
+            "flight": {
+                "PNR": "171515",
+                "flightNo": "192837262",
+                "flightType": "Charter",
+                "airlineVendor": "US Airlines",
+                "journeyType": "One-way",
+                "travelClass": "First Class",
+                "duration": 590,
+                "travelDate": "2022-11-16",
+                "departureTime": "2022-11-16T21:30",
+                "arrivalTime": "2022-11-16T06:30",
+                "from": "GRU",
+                "to": "JFK",
+                "baseFare": 8000
+            }
+        }
+        """
+        bookingId = uuid.uuid4()
+        itenraryId = uuid.uuid4()
+        bookingDate = datetime.today().strftime('%d/%m/%y')
+        booking_data = {
+            "bookingId": bookingId,
+            "bookingDate": bookingDate,
+            "bookingStatus": "Done",
+            "userid": adminUserID
+
+        }
+
+        print("request.json = ", request.json)
+        bookingItenary_data = request.json["flight"]
+        bookingItenary_data["itenraryId"] = itenraryId
+        bookingItenary_data["bookingId"] = bookingId
+
+        print("bookingItenary_data = ",bookingItenary_data)
+        bookingResp = create_UserBookings(booking_data)
+        bookingItenaryResp = create_BookingItenrary(bookingItenary_data)
+
+
+        return {"message": "booking successfull!!"}
 
 
 @app.route('/home', methods=["Post"])

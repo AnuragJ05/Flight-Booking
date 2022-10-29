@@ -14,7 +14,19 @@ def get_UserBookings():
 
 
 def create_UserBookings(data: dict):
-    pass
+    conn = get_db_connection()
+    cur = conn.cursor()  # creating a cursor
+
+    # INSERT INTO dbo."UserBookings"(
+    # 	"bookingId", userid, "bookingDate", "bookingStatus")
+    # 	VALUES (?, ?, ?, ?);
+    cur.execute('''INSERT INTO dbo."UserBookings"(
+    "bookingId", userid, "bookingDate", "bookingStatus")
+    VALUES (\'{}\', \'{}\', \'{}\', \'{}\');
+          '''.format(data["bookingId"], data["userid"], data["bookingDate"], data["bookingStatus"]))
+    conn.commit()
+    conn.close()
+    return data
 
 
 def delete_UserBookings(data: dict):
