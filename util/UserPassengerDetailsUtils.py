@@ -9,9 +9,18 @@ def get_UserPassengerDetails():
     if request.method == "GET":
         cur.execute('''SELECT "passengerId", userid, "firstName", "middleName", "lastName", "DOB", 
         "mobileNo", "adhaarNo", "panCardNo" FROM dbo."UserPassengerDetails";''')
-        rows = cur.fetchall()
+        result = cur.fetchall()
+        columns = list(cur.description)
+        # make dict
+        results = []
+        for row in result:
+            row_dict = {}
+            for i, col in enumerate(columns):
+                row_dict[col.name] = row[i]
+            results.append(row_dict)
         conn.close()
-        return rows
+        print("result = ",results)
+        return results
 
 
 def create_UserPassengerDetails(data: dict):
