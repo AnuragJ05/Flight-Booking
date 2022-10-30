@@ -1,3 +1,4 @@
+from base64 import encode
 from re import T
 from tkinter.tix import Tree
 from turtle import pd
@@ -34,7 +35,7 @@ def get_password_from_db(user):
 def check_passwd(user_name, passwd):
     try:
         encryp_passwd = get_password_from_db(user_name)
-        if bcrypt.checkpw(encryp_passwd, passwd):
+        if bcrypt.checkpw(passwd.encode('utf8'), encryp_passwd.encode('utf8')):
             return True
         else:
             return False
