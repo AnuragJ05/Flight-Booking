@@ -1,0 +1,6 @@
+-- SCHEMA: dbo
+
+-- DROP SCHEMA IF EXISTS dbo ;
+
+CREATE SCHEMA IF NOT EXISTS dbo
+    AUTHORIZATION postgres;
