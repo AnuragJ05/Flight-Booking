@@ -133,10 +133,13 @@ def user_login():
             user_name = request.data['username']
             passwd = request.data['password']
             check = check_passwd(user_name, passwd)
-
-
+            if check:
+                return jsonify({"login": True})
+            else:
+                return jsonify({"login": False})
     except Exception as e:
         print("Error in login {}".format(e))
+        return jsonify({"login": False})
 
 
 @app.route("/register", methods=["POST"])

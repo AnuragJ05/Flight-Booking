@@ -20,7 +20,13 @@ def get_db_connection():
 
 def get_password_from_db(user):
     try:
-        query = (""" SELECT """)
+        conn = get_db_connection()
+        cur = conn.cursor()
+        query = (""" SELECT "usr"."userId", "usr"."username", "psswd"."userId", "psswd"."passwordHash" FROM dbo."User" usr join dbo."UserPasswordEntity" psswd on "usr"."userId" = "psswd"."userId" where "usr"."username" = '{}';""".format(user))
+        cur.execute(query)
+        a = cur.fetchall()
+
+        return a[0][3]
     except Exception as e:
         print("Error in get_password_from_db {}".format(e))
 
