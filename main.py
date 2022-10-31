@@ -59,9 +59,19 @@ def passenger():
         return {"message": "passenger created successful!!"}
 
 
-@app.route('/book', methods=["Post"])
+@app.route('/book', methods=["Get","Post"])
 def book_flight():
-    if request.method == "POST":
+    if request.method == "GET":
+        """
+        Get : http://localhost:5050/book?passengerId=cf093eed-27e9-46aa-a9c3-518dbc5892a3
+        """
+        args = request.args
+        passengerId = args.get('passengerId')
+        if not passengerId:
+            return {"message": "Passenger ID not provided"}
+        rows = get_UserBookingPassenger(passengerId)
+        return rows
+    elif request.method == "POST":
         """
         post: http://localhost:5050/book
         {

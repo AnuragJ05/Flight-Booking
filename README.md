@@ -169,3 +169,35 @@ This would help streamline the ticketing process in three ways-
     }
 ```
 
+### 7)  Get Booking Details
+
+    Get : http://localhost:5050/book?passengerId=cf093eed-27e9-46aa-a9c3-518dbc5892a3
+``` 
+    response: 
+
+    [
+        {
+            "PNR": "ABC124",
+            "airlineVendor": "SpiceJet",
+            "arrivalTime": "Mon, 10 Oct 2022 00:00:00 GMT",
+            "baseFare": "3200",
+            "bookingDate": "Mon, 08 Aug 2022 00:00:00 GMT",
+            "bookingId": "f769d038-94f7-4daa-82b8-8e9680b99024",
+            "bookingStatus": "Booked",
+            "departureTime": "Mon, 10 Oct 2022 00:00:00 GMT",
+            "flightNo": "SG121",
+            "flightType": "Boing",
+            "from": "BANG",
+            "id": "9d2ae75c-ca7d-447e-ac22-53cbf0fd47f1",
+            "itenraryId": "a0e4c072-3d64-431a-af29-19368f647b1e",
+            "journeyType": "Direct",
+            "passengerId": "cf093eed-27e9-46aa-a9c3-518dbc5892a3",
+            "seatNo": "24A",
+            "to": "BOM",
+            "travelClass": "Economy",
+            "travelDate": "Mon, 10 Oct 2022 00:00:00 GMT",
+            "userid": "a55b99a8-8182-459e-8b67-78abc73d5a06"
+        }
+   ]
+
+```
