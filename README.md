@@ -31,11 +31,17 @@ This would help streamline the ticketing process in three ways-
 
     Post : http://localhost:5050/login
 ``` 
-    response: 
+    request: 
 
         {
                 "username": "dummy",
                 "password": "12345678"
+        }
+    
+    response: 
+
+        {
+            "login": true
         }
 
 ```
