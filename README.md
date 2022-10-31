@@ -10,7 +10,38 @@ This would help streamline the ticketing process in three ways-
 
 ## APIs
 
-### 1)  Flight Details 
+### 1)  Register User
+    Post : http://localhost:5050/register
+``` 
+    response: 
+    
+    {
+            "username": "dummy",
+            "password": "12345678",
+            "firstName": "dummy",
+            "middleName": "dummy",
+            "lastName": "dummy",
+            "DOB": "05/11/1998",
+            "mobileNo": "0999679302"
+    }
+
+```
+
+### 2)  User Login
+
+    Post : http://localhost:5050/login
+``` 
+    response: 
+
+        {
+                "username": "dummy",
+                "password": "12345678"
+        }
+
+```
+
+
+### 3)  Flight Details 
 
     This feature will let customers view options to choose from and filter based on below: 
 
@@ -43,29 +74,7 @@ This would help streamline the ticketing process in three ways-
     ] 
 
 ```
-
-### 2) Get Passenger details 
-
-    Get : http://localhost:5050/passenger
-``` 
-    response: 
-
-    [
-        {
-            "DOB": "Thu, 10 Oct 1991 00:00:00 GMT",
-            "adhaarNo": "121282829191",
-            "firstName": "A",
-            "lastName": "C",
-            "middleName": "B",
-            "mobileNo": "7799887765",
-            "panCardNo": null,
-            "passengerId": "cf093eed-27e9-46aa-a9c3-518dbc5892a3",
-            "userid": "a55b99a8-8182-459e-8b67-78abc73d5a06"
-        }
-    ]
-```
-
-### 3) Register Passenger Details
+### 4) Register Passenger Details
 
     Post : http://localhost:5050/passenger
 ``` 
@@ -88,7 +97,30 @@ This would help streamline the ticketing process in three ways-
     }
 ```
 
-### 4) Tickets Booking
+
+### 5) Get Passenger details 
+
+    Get : http://localhost:5050/passenger
+``` 
+    response: 
+
+    [
+        {
+            "DOB": "Thu, 10 Oct 1991 00:00:00 GMT",
+            "adhaarNo": "121282829191",
+            "firstName": "A",
+            "lastName": "C",
+            "middleName": "B",
+            "mobileNo": "7799887765",
+            "panCardNo": null,
+            "passengerId": "cf093eed-27e9-46aa-a9c3-518dbc5892a3",
+            "userid": "a55b99a8-8182-459e-8b67-78abc73d5a06"
+        }
+    ]
+```
+
+
+### 6) Tickets Booking
 
     This feature will let customers book or cancel flight tickets as per their requirements. 
 

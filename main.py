@@ -29,7 +29,7 @@ def flight():
         return data
 
 
-@app.route('/passenger', methods=["Get", "Post", "PUT", "DELETE"])
+@app.route('/passenger', methods=["Get", "Post"])
 def passenger():
     if request.method == "GET":
         """
@@ -128,10 +128,17 @@ def book_flight():
 
 @app.route("/login", methods=['POST'])
 def user_login():
+    """
+        Post : http://localhost:5050/login
+        {
+                "username": "dummy",
+                "password": "12345678"
+        }
+        """
     try:
-        if request.method == "POST" and "username" in request.data and "password" in request.data:
-            user_name = request.data['username']
-            passwd = request.data['password']
+        if request.method == "POST" and "username" in request.json and "password" in request.json:
+            user_name = request.json['username']
+            passwd = request.json['password']
             check = check_passwd(user_name, passwd)
             if check:
                 return jsonify({"login": True})
@@ -144,19 +151,32 @@ def user_login():
 
 @app.route("/register", methods=["POST"])
 def register():
+    """
+    Post : http://localhost:5050/register
+    {
+            "username": "dummy",
+            "password": "12345678",
+            "firstName": "dummy",
+            "middleName": "dummy",
+            "lastName": "dummy",
+            "DOB": "05/11/1998",
+            "mobileNo": "0999679302"
+    }
+    """
     try:
+        print("data= ", request.json)
         if request.method == "POST" and "username" \
-                in request.data and "password" in request.data:
+                in request.json and "password" in request.json:
 
-            user_name = request.data['username']
+            user_name = request.json['username']
 
             conn = get_db_connection()
             cur = conn.cursor()
-            cur.execute("""SELECT * FROM dbo."User" WHERE username = '{}' """.format(user_name))
+            cur.execute("""SELECT * FROM dbo."User" WHERE username = \'{}\' """.format(user_name))
             exists = cur.fetchall()
 
             if not exists:
-                check = insert_new_user(request.data)
+                check = insert_new_user(request.json)
                 if check:
                     return jsonify({"success": True})
             else:
@@ -166,56 +186,6 @@ def register():
             return jsonify({"invalid_requst": True})
     except Exception as e:
         print("Error in register {}".format(e))
-
-
-# @app.route('/user', methods=["Get", "Post", "PUT", "DELETE"])
-# def user():
-#     if request.method == "GET":
-#         """
-#         Get : http://localhost:5050/user
-#         """
-#         rows = util.userUtils.get_users()
-#         return rows
-#
-#     elif request.method == "POST":
-#         """
-#         Post : http://localhost:5050/user
-#         {
-#             "username": "test1234",
-#             "firstName": "test2",
-#             "middleName": "test2",
-#             "lastName": "test2",
-#             "DOB": "05/11/2000",
-#             "mobileNo": "0999675302"
-#         }
-#         """
-#         data = util.userUtils.create_user(data=request.json)
-#         return data
-#     elif request.method == "PUT":
-#         """
-#         PUT : http://localhost:5050/user
-#         {
-#             "userId": "4df0939f-7b1b-4f54-b600-f80b190f954e",
-#             "username": "test12345",
-#             "firstName": "test2",
-#             "middleName": "test2",
-#             "lastName": "test2",
-#             "DOB": "05/11/2000",
-#             "mobileNo": "9699675302"
-#         }
-#         """
-#         data = util.userUtils.update_user(data=request.json)
-#         return data
-#     elif request.method == "DELETE":
-#         """
-#         Delete : http://localhost:5050/user
-#         {
-#             "username": "test1234"
-#         }
-#         """
-#         data = util.userUtils.delete_user(data=request.json)
-#         return data
-#
 
 
 @app.route('/home', methods=["Post"])
