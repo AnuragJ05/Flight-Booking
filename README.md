@@ -13,7 +13,7 @@ This would help streamline the ticketing process in three ways-
 ### 1)  Register User
     Post : http://localhost:5050/register
 ``` 
-    response: 
+    request: 
     
     {
             "username": "dummy",
@@ -24,6 +24,10 @@ This would help streamline the ticketing process in three ways-
             "DOB": "05/11/1998",
             "mobileNo": "0999679302"
     }
+    
+    response:
+    
+    {"success": True}
 
 ```
 
