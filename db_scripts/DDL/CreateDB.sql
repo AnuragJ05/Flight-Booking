@@ -1,3 +1,9 @@
+-- ********************************* Audit History *********************************
+-- Name                 Action      Date            Comment
+--Bhushan Bapat         Create      10/8/2022
+
+-- *********************************************************************************
+
 -- Database: FlightBookingSystem
 
 -- DROP DATABASE IF EXISTS "FlightBookingSystem";
