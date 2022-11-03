@@ -14,7 +14,7 @@
 ** 24/10/2022 Bhushan Bapat	 Added Stored Procedure for Individual Payment
 
 *******************************************************************************/
-CREATE PROCEDURE dbo."AddBookingTransaction"()
+CREATE PROCEDURE dbo."AddBookingTransaction"(
 	IN	_BookingId	 Uuid ,
 	IN	_TransactionId	 Uuid ,
 	IN	_TotalAmount	 Numeric ,
@@ -24,7 +24,7 @@ CREATE PROCEDURE dbo."AddBookingTransaction"()
 	IN	_GrantTotal	 Numeric ,
 	IN	_Promocode 	Character Varying ,
 	IN	_PromocodeAmount	 Numeric,
-	IN	_PaymentType	 Character Varying
+	IN	_PaymentType	 Character Varying)
 
   LANGUAGE 'plpgsql'
   AS $BODY$

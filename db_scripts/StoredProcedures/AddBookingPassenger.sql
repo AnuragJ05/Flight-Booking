@@ -13,12 +13,12 @@
 ** 24/10/2022 Bhushan Bapat  Created Stored Procedure to add Booking Passenger
 
 *******************************************************************************/
-CREATE PROCEDURE dbo."AddBookingPassenger"()
+CREATE PROCEDURE dbo."AddBookingPassenger"(
 	IN _ID UUID,
 	IN _BookingId UUID,
 	IN _PassengerId uuid,
-	IN _SeatNo character varying
-  
+	IN _SeatNo character varying)
+
   LANGUAGE 'plpgsql'
   AS $BODY$
   BEGIN

@@ -13,7 +13,7 @@
   ** 19/10/2022 Bhushan Bapat  Created Stored Procedure to add User to the database
   ** 20/10/2022 Bhushan Bapat  Added AddPasswordPassword SP to this SP
   *******************************************************************************/
-  CREATE PROCEDURE dbo."CreateUser"()
+  CREATE PROCEDURE dbo."CreateUser"(
     OUT _UserID UUID,
     IN _FirstName text,
     IN _LastName text,
@@ -25,7 +25,7 @@
     IN _CreatedDate DATE,
     IN _UpdatedBy UUID,
     IN _UpdatedDate DATE
-    IN _passwordHash
+    IN _passwordHash character varying)
 
   LANGUAGE 'plpgsql'
   AS $BODY$

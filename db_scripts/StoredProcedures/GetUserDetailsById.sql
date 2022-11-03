@@ -13,8 +13,7 @@
 ** 19/10/2022 Bhushan Bapat  Created Stored Procedure to get User by ID
 
 *******************************************************************************/
-CREATE PROCEDURE dbo."GetUserDetailsById"()
-  IN _UserID UUID,
+CREATE PROCEDURE dbo."GetUserDetailsById"(IN _UserID UUID)
 
 
 LANGUAGE 'plpgsql'

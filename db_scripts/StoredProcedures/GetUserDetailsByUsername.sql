@@ -13,8 +13,7 @@
 ** 19/10/2022 Bhushan Bapat  Created Stored Procedure to get User by username
 
 *******************************************************************************/
-CREATE PROCEDURE dbo."GetUserDetailsByUsername"()
-  IN _Username character varying,
+CREATE PROCEDURE dbo."GetUserDetailsByUsername"(IN _Username character varying)
 
 
 LANGUAGE 'plpgsql'

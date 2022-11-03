@@ -13,9 +13,9 @@
 ** 23/10/2022 Bhushan Bapat	 Added Stored Procedure for getting Booking Details
 
 *******************************************************************************/
-CREATE PROCEDURE dbo."GetBookingDetails"()
+CREATE PROCEDURE dbo."GetBookingDetails"(
 	IN _BookingId UUID,
-  IN _UserId UUID
+  IN _UserId UUID)
 
   LANGUAGE 'plpgsql'
   AS $BODY$

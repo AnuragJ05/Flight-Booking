@@ -12,11 +12,11 @@
 ** --------   --------         ---------------------------------------------------
 
 *******************************************************************************/
-CREATE PROCEDURE dbo."AddUserPassword"()
+CREATE PROCEDURE dbo."AddUserPassword"(
    IN _PasswordId uuid,
    IN _UserId uuid,
    IN _PasswordHash character varying,
-   IN createdDate    = _CreatedDate
+   IN _CreatedDate date)
 
    LANGUAGE 'plpgsql'
    AS $BODY$

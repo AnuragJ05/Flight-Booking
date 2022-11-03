@@ -12,7 +12,7 @@
 ** --------   --------         ---------------------------------------------------
 
 *******************************************************************************/
-CREATE PROCEDURE dbo."AddUserPassenger"()
+CREATE PROCEDURE dbo."AddUserPassenger"(
   IN _UserID UUID,
   IN _FirstName text,
   IN _LastName text,
@@ -20,7 +20,7 @@ CREATE PROCEDURE dbo."AddUserPassenger"()
   IN _MobileNo numeric(10,0),
   IN _DOB DATE,
   IN _AdhaarNo numeric(12,0),
-  IN _PanCardNo character varying (10),
+  IN _PanCardNo character varying (10))
 
 LANGUAGE 'plpgsql'
 AS $BODY$

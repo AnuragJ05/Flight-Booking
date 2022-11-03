@@ -13,8 +13,7 @@
 ** 24/10/2022 Bhushan Bapat	 Added Stored Procedure for Booking Itenrary
 
 *******************************************************************************/
-CREATE PROCEDURE dbo."GetAllBookings"()
-  IN _UserId UUID
+CREATE PROCEDURE dbo."GetAllBookings"(IN _UserId UUID)
 
   LANGUAGE 'plpgsql'
   AS $BODY$

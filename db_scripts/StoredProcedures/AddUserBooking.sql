@@ -15,7 +15,7 @@
 ** 24/10/2022 Bhushan Bapat Added Booking Passesnger Stored Procedure Call
 
 *******************************************************************************/
-CREATE PROCEDURE dbo."CreateUserBooking"()
+CREATE PROCEDURE dbo."CreateUserBooking"(
 	IN _UserID UUID,
 	OUT _BookingId UUID,
 	IN _BookingStatus character varying
@@ -32,7 +32,7 @@ CREATE PROCEDURE dbo."CreateUserBooking"()
 	IN _FlightType character varying
 	IN _BaseFare numeric NOT NULL,
 	IN _PassengerId uuid,
-	IN _SeatNo character varying
+	IN _SeatNo character varying)
 
   LANGUAGE 'plpgsql'
   AS $BODY$

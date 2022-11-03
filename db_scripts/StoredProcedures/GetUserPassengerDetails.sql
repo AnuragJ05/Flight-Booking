@@ -12,8 +12,7 @@
 ** --------   --------         ---------------------------------------------------
 
 *******************************************************************************/
-CREATE PROCEDURE dbo."GetUserPassengerDetails"()
-  IN _UserID UUID,
+CREATE PROCEDURE dbo."GetUserPassengerDetails"(IN _UserID UUID)
 
 LANGUAGE 'plpgsql'
 AS $BODY$

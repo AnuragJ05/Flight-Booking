@@ -13,7 +13,7 @@
 ** 24/10/2022 Bhushan Bapat  Created Stored Procedure to add Booking Itenrary for the user
 
 *******************************************************************************/
-CREATE PROCEDURE dbo."AddBookingItenraray"()
+CREATE PROCEDURE dbo."AddBookingItenraray"(
 	IN _ItenraryId uuid,
 	IN _BookingId uuid ,
 	IN _PNR character varying,
@@ -27,8 +27,8 @@ CREATE PROCEDURE dbo."AddBookingItenraray"()
 	IN _AirlineVendor character varying,
 	IN _FlightNo character varying,
 	IN _FlightType character varying,
-	IN _BaseFare numeric
-  
+	IN _BaseFare numeric)
+
   LANGUAGE 'plpgsql'
   AS $BODY$
   BEGIN
