@@ -16,18 +16,19 @@
 CREATE PROCEDURE dbo."AddBookingItenraray"()
 	IN _ItenraryId uuid,
 	IN _BookingId uuid ,
-	IN _PNR character varying
-	IN _From character varying
-	IN _To character varying
-	IN _TravelDate date NOT NULL,
-	IN _DepartureTime date NOT NULL,
-	IN _ArrivalTime date NOT NULL,
-	IN _JourneyType character varying
-	IN _Travel
-	IN _AirlineVendor character varying
-	IN _FlightNo character varying
-	IN _FlightType character varying
-	IN _BaseFare numeric NOT NULL,
+	IN _PNR character varying,
+	IN _From character varying,
+	IN _To character varying,
+	IN _TravelDate date ,
+	IN _DepartureTime date ,
+	IN _ArrivalTime date ,
+	IN _JourneyType character varying,
+	IN _TravelClass character varying,
+	IN _AirlineVendor character varying,
+	IN _FlightNo character varying,
+	IN _FlightType character varying,
+	IN _BaseFare numeric
+  
   LANGUAGE 'plpgsql'
   AS $BODY$
   BEGIN

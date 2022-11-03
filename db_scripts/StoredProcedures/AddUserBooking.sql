@@ -55,50 +55,50 @@ CREATE PROCEDURE dbo."CreateUserBooking"()
     )
     SELECT
       UserId			= _UserID,
-  	  BookingId		= _BookingId
-  	  BookingDate		= _UtcNow
+  	  BookingId		= _BookingId,
+  	  BookingDate		= _UtcNow,
       BookingStatus	= _BookingStatus
 
     DECLARE _ItenraryId uuid
     SET _ItenraryId = NEWID()
     EXEC dbo.AddBookingItenraray
-      	Itenraryid		=	_Itenraryid
-      	Bookingid		=	_Bookingid
-      	Pnr				=	_Pnr
-      	From			=	_From
-      	To				=	_To
-      	Traveldate		=	_Traveldate
-      	Departuretime	=	_Departuretime
-      	Arrivaltime		=	_Arrivaltime
-      	Journeytype		=	_Journeytype
-      	Travel			=	_Travel
-      	Airlinevendor	=	_Airlinevendor
-      	Flightno		=	_Flightno
-      	Flighttype		=	_Flighttype
-      	Basefare		=	_Basefare
-      	Basefare		=	_Basefare
+      	Itenraryid		=	_Itenraryid,
+      	Bookingid		=	_Bookingid,
+      	Pnr				=	_Pnr,
+      	From			=	_From,
+      	To				=	_To,
+      	Traveldate		=	_Traveldate,
+      	Departuretime	=	_Departuretime,
+      	Arrivaltime		=	_Arrivaltime,
+      	Journeytype		=	_Journeytype,
+      	Travel			=	_Travel,
+      	Airlinevendor	=	_Airlinevendor,
+      	Flightno		=	_Flightno,
+      	Flighttype		=	_Flighttype,
+      	Basefare		=	_Basefare,
+      	Basefare		=	_Basefare,
 
       DECLARE _Id uuid
       SET _Id = NEWID()
     	EXEC dbo.AddBookingPassenger
-      	Id   	       =	_Id
-      	BookingId    = _BookingId
-      	PassengerId  = _PassengerId
+      	Id   	       =	_Id,
+      	BookingId    = _BookingId,
+      	PassengerId  = _PassengerId,
       	SeatNo			 = _SeatNo
 
 
         DECLARE _transactionId uuid
         SET _transactionId = NEWID()
       	EXEC dbo.AddBookingTransaction
-        	Bookingid	     =	_Bookingid
-        	Transactionid	 =	_Transactionid
-        	Totalamount	   =	_Totalamount
-        	CGST	         =	_CGST
-        	SGST	         =	_SGST
-        	ServiceCharge	 =	_ServiceCharge
-        	GrantTotal	   =	_Granttotal
-        	Promocode 	   =	_Promocode
-        	PromocodeAmount=	_PromocodeAmount
+        	Bookingid	     =	_Bookingid,
+        	Transactionid	 =	_Transactionid,
+        	Totalamount	   =	_Totalamount,
+        	CGST	         =	_CGST,
+        	SGST	         =	_SGST,
+        	ServiceCharge	 =	_ServiceCharge,
+        	GrantTotal	   =	_Granttotal,
+        	Promocode 	   =	_Promocode,
+        	PromocodeAmount=	_PromocodeAmount,
         	PaymentType	   =	_PaymentType
 
   END

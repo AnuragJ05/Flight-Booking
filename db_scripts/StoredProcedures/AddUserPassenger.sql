@@ -47,13 +47,13 @@ BEGIN
   )
   SELECT
     UserId			 = _UserID,
-	  PassengerId	 = _PassengerId
+	  PassengerId	 = _PassengerId,
 	  FirstName		 = _FirstName,
     LastName		 = _LastName,
     MiddleName   = _MiddleName,
     UserName     = UserName,
 	  DOB      		 = _DOB,
-	  AdhaarNo		 = _AdhaarNo
+	  AdhaarNo		 = _AdhaarNo,
 	  PanCardNo		 = _PanCardNo
 
   END

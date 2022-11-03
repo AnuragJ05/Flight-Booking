@@ -18,6 +18,7 @@ CREATE PROCEDURE dbo."AddBookingPassenger"()
 	IN _BookingId UUID,
 	IN _PassengerId uuid,
 	IN _SeatNo character varying
+  
   LANGUAGE 'plpgsql'
   AS $BODY$
   BEGIN
@@ -31,7 +32,7 @@ CREATE PROCEDURE dbo."AddBookingPassenger"()
   	SELECT
   		Id			=	_Itenraryid	,
   		Bookingid	=	_Bookingid	,
-  		PassengerId	=	_PassengerId
+  		PassengerId	=	_PassengerId,
   		SeatNo		=	_SeatNo
 
   END

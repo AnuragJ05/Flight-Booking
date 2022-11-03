@@ -1,6 +1,6 @@
 /******************************************************************************
 **  Name: AddBookingTransaction
-**  Desc: Add Booking Passenger to the Booking
+**  Desc: Add Booking Transaction to the Booking
 **
 **  Author:    Bhushan Bapat
 **
@@ -43,24 +43,24 @@ CREATE PROCEDURE dbo."AddBookingTransaction"()
 		PaymentType
 	)
 	SELECT
-		BookingId	=	_BookingId
-		TransactionId	=	_TransactionId
-		TotalAmount	=	_TotalAmount
-		CGST	=	_CGST
+		BookingId	=	_BookingId,
+		TransactionId	=	_TransactionId,
+		TotalAmount	=	_TotalAmount,
+		CGST	=	_CGST,
 		SGST	=	_SGST
-		ServiceCharge	=	_ServiceCharge
-		GrantTotal	=	_GrantTotal
-		Promocode 	=	_Promocode
-		PromocodeAmount	=	_PromocodeAmount
-		PaymentType	=	_PaymentType
+		ServiceCharge	=	_ServiceCharge,
+		GrantTotal	=	_GrantTotal,
+		Promocode 	=	_Promocode,
+		PromocodeAmount	=	_PromocodeAmount,
+		PaymentType	=	_PaymentType,
 
     DECLARE _IndividualPaymentId uuid
     SET _IndividualPaymentId= NEWID()
     EXEC dbo.SetIndividualFlightPayemnt
-      IndividualPaymentId	=	_IndividualPaymentId
-      Transactionid	=	_Transactionid
-      FlightId	=	_FlightId
-      BaseFare	=	_BaseFare
+      IndividualPaymentId	=	_IndividualPaymentId,
+      Transactionid	=	_Transactionid,
+      FlightId	=	_FlightId,
+      BaseFare	=	_BaseFare,
       ConvenienceFees	=	_ConvenienceFees
 
   END

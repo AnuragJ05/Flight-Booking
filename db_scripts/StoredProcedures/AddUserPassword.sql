@@ -30,9 +30,9 @@ CREATE PROCEDURE dbo."AddUserPassword"()
       CreatedDate,
     )
     SELECT
-      UserPasswordId	= _PasswordId
-  	  UserId			= _UserID
-  	  CreatedDate		= _CreatedDate
+      UserPasswordId	= _PasswordId,
+  	  UserId			= _UserID,
+  	  CreatedDate		= _CreatedDate,
 
   END
 $BODY$;
