@@ -19,7 +19,6 @@ def get_UserPassengerDetails():
                 row_dict[col.name] = row[i]
             results.append(row_dict)
         conn.close()
-        print("result = ",results)
         return results
 
 

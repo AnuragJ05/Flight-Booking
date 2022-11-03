@@ -1,0 +1,215 @@
+{
+	"info": {
+		"_postman_id": "b911bc2e-6ea1-41df-aa20-254716feec7c",
+		"name": "flight booking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"username\": \"dummy1\",\r\n            \"password\": \"12345678\",\r\n            \"firstName\": \"dummy1\",\r\n            \"middleName\": \"dummy1\",\r\n            \"lastName\": \"dummy1\",\r\n            \"DOB\": \"05/11/1998\",\r\n            \"mobileNo\": \"9991193021\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5050/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n                \"username\": \"dummy1\",\r\n                \"password\": \"12345678\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5050/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "flight details",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5050/flight",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"flight"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register passenger",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "acc",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"firstName\": \"test10\",\r\n        \"middleName\": \"test10\",\r\n        \"lastName\": \"test10\",\r\n        \"DOB\": \"05/11/2000\",\r\n        \"mobileNo\": \"9239675302\",\r\n        \"adhaarNo\": 234582829191,\r\n        \"panCardNo\" : \"BI97B7V\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5050/passenger",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"passenger"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get passenger details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5050/passenger",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"passenger"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ticket booking",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"flight\": {\r\n            \"PNR\": \"171515\",\r\n            \"flightNo\": \"192837262\",\r\n            \"flightType\": \"Charter\",\r\n            \"airlineVendor\": \"US Airlines\",\r\n            \"journeyType\": \"One-way\",\r\n            \"travelClass\": \"First Class\",\r\n            \"duration\": 590,\r\n            \"travelDate\": \"2022-11-16\",\r\n            \"departureTime\": \"2022-11-16T21:30\",\r\n            \"arrivalTime\": \"2022-11-16T06:30\",\r\n            \"from\": \"GRU\",\r\n            \"to\": \"JFK\",\r\n            \"baseFare\": 8000\r\n        },\r\n        \"passenger\": [\r\n            {\r\n                \"passengerId\" : \"cf093eed-27e9-46aa-a9c3-518dbc5892a3\",\r\n                \"seatNo\" : \"34B\"\r\n            }\r\n        ],\r\n        \"payment\" : {\r\n            \"totalAmount\" : 8000,\r\n            \"CGST\": 750,\r\n            \"SGST\": 750,\r\n            \"serviceCharge\" : 1000,\r\n            \"grantTotal\" : 10500,\r\n            \"promocode\" : \"NA\",\r\n            \"promocodeAmount\" : 0,\r\n            \"paymentType\": \"CASH\"\r\n            }\r\n        }"
+				},
+				"url": {
+					"raw": "http://localhost:5050/book",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get booking details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5050/book?passengerId=cf093eed-27e9-46aa-a9c3-518dbc5892a3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"book"
+					],
+					"query": [
+						{
+							"key": "passengerId",
+							"value": "cf093eed-27e9-46aa-a9c3-518dbc5892a3"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
