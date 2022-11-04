@@ -1,0 +1,95 @@
+<div class="row heading">
+    <img src="../../../assets/flightLogo.jpg" alt="" class="logo" for="head">
+    <a id="head" >FLIGHT TICKET BOOKING SYSTEM</a>
+  </div>
+<div class="container">
+    <div class="form-check form-check-inline ">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
+        <label class="form-check-label" for="inlineRadio1">One way</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+        <label class="form-check-label" for="inlineRadio2">Round Trip</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" >
+        <label class="form-check-label" for="inlineRadio3">Multicity</label>
+      </div>
+      <div class="vl"></div>
+      <div class="form-check form-check-inline ltc">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+        <label class="form-check-label" for="inlineCheckbox1">LTC</label>
+      </div>
+      <div class="row row2">
+        <div class="col-2">
+            <input type="text" class="" placeholder="From" value="São Paulo Airport GRU" size="25">
+        </div>
+          <div class="col-2">
+            <input type="text" class="" placeholder="To" value="Kennedy International Airport JFK" size="25">
+          </div>
+          <div class="col-2">
+            <input type="datetime-local" class="date" value="2022-11-16T06:30">
+          </div>
+          <div class="col-2">
+            <input type="datetime-local" class="date" placeholder="" value="2022-11-16T21:30">
+          </div>    
+          <div class="col-3">
+            <input type="text" class="" placeholder="" value="1 Traveller(s), First Class">
+          </div>    
+          <div class="col-1">
+            <button type="submit" class="btn btn-primary" (click)="back()">Search</button>
+          </div>
+      </div>  
+</div>
+<div class="navbar navbar-light bg-light p-2">
+    <div class="navbar-brand" href="#">
+        <a class="navbar-brand p-3">São Paulo Airport GRU</a>
+        <i class="fa fa-arrow-right"></i>
+        <a class="navbar-brand p-3 "> Kennedy International Airport JFK</a>
+        <a class="navbar-brand date">Wednesday, 16 November 2022 </a>
+        <a class="navbar-brand class"> First Class </a>
+    </div>
+</div>
+<div class="card m-4">
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <figure class="figure text-center">
+                    <img src="../../../assets/airasiaLogo.jpg"  class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure."><br/>
+                    <a>US Airlines</a><br/>
+                    <a>Charter</a><br/>
+                    <a>192837262</a>
+                  </figure>
+            </div>
+            <div class="col detail">
+                    <div class=" p-3">
+                        <a class="navbar-brand p-3">São Paulo Airport GRU</a><br/>
+                        <a class="navbar-brand p-3">Wednesday, 16 November 2022</a>
+                        <div class="vl"></div> 
+                        <a class="navbar-brand p-3">06:30</a><br/>
+                        <a class="navbar-brand p-3">São Paulo Airport</a>
+                    </div>
+                    <div class="plane">
+                        <i class='fas fa-plane'></i><br/><a>09h 50m</a>
+                    </div>
+                    <div class=" p-3">
+                        <a class="navbar-brand p-3">Kennedy International Airport JFK</a><br/>
+                        <a class="navbar-brand p-3">Wednesday, 16 November 2022 </a>
+                        <div class="vl"></div> 
+                        <a class="navbar-brand p-3">21:30</a><br/>
+                        <a class="navbar-brand p-3">Kennedy International Airport</a>
+                    </div>
+            </div>
+            <div class="col">
+                <div class=" pt-4">
+                    <a class="navbar-brand ">₹8000</a>
+                </div>
+            </div>
+            <div class="col">
+                <div class=" pt-4">
+                    <button type="button" class="btn btn-primary" (click)="book()">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

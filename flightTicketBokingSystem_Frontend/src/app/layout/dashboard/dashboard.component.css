@@ -1,0 +1,39 @@
+.way{
+    margin-left: 1%;
+}
+.where{
+    font-weight: bold;
+    font-size: 16px;
+}
+.logo{
+    width: 20% ;
+}
+.heading{
+    padding-left: 3%;
+    font-size: 25px;
+    font-weight: bold;
+}
+.main{
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 4%;
+    padding-top: 2%;
+}
+.dashboard{
+    /* background-image: url('../../../assets/flightBck.jfif') ; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.tab{
+    padding-bottom: 1%;
+    padding-left: 5%;
+    font-size: 20px;
+    font-weight: bold;
+}
+.reset{
+    margin-left: 1%;
+}
+.dropdown-menu{
+    margin-left: 60% !important;
+}

@@ -1,0 +1,50 @@
+<div class="row heading">
+  <img src="../../../assets/flightLogo.jpg" alt="" class="logo" for="head">
+  <a id="head" >FLIGHT TICKET BOOKING SYSTEM</a>
+</div>
+
+<div class="card m-5 p-4">
+  <h2>Add Passenger Details</h2>
+        <div class="row">
+          <div class=" col">
+            <label for="inputEmail4">First Name</label>
+            <input type="text" class="form-control" id="inputEmail4" placeholder="First Name">
+          </div>
+          <div class=" col">
+            <label for="inputEmail4">Middle Name</label>
+            <input type="text" class="form-control" id="inputEmail4" placeholder="Middle Name">
+          </div>
+          <div class="col">
+            <label for="inputPassword4">Last Name</label>
+            <input type="text" class="form-control" id="inputPassword4" placeholder="Last Name">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="inputCity">DOB</label>
+            <input type="date" class="form-control" id="inputCity">
+          </div>
+          <div class="col">
+            <label for="inputState">Mobile No.</label>
+            <input type="number" class="form-control" id="inputCity" placeholder="+91">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="inputZip">Adhar No.</label>
+            <input type="text" class="form-control" id="inputZip" placeholder="Adhar No.">
+          </div>
+          <div class="col">
+            <label for="inputZip">Pan Card No.</label>
+            <input type="text" class="form-control" id="inputZip" placeholder="Adhar No.">
+          </div>
+        </div>
+        <div class="col text-left mt-2">
+            <button type="submit" class="btn btn-primary" (click)="add()">Add Passenger details</button>
+        </div>
+</div>
+
+<div class="col p-5">
+  <button class="btn btn-primary pay" (click)="pay()">Proceed to pay <i class="fa fa-arrow-right"></i></button>
+  <button class="btn btn-primary back" (click)="back()"> <i class="fa fa-arrow-left"></i>Back</button>
+</div>

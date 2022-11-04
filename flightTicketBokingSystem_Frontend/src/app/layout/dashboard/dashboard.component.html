@@ -1,0 +1,128 @@
+<div class="dashboard" >
+  <div class="row ">
+    <div class="col heading">
+      <img src="../../../assets/flightLogo.jpg" alt="" class="logo" for="head">
+      <a id="head" >FLIGHT TICKET BOOKING SYSTEM</a>
+    </div>
+    <div class="col text-end">
+      <div class="dropdown">
+        <p class="dropdown-toggle m-5"  id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          dummy
+        </p>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="login">Logout</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- <p class="text-end">Logout</p> -->
+  <ul class="nav nav-tabs tab" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Domestic</a>
+    </li>
+  </ul>
+  <div class="tab-content main" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <div class="col ">
+        <div class="row">
+          <div class="col">
+            <input type="radio" id="one" name="one" value="one">
+            <label for="one" class="way">One Way</label>
+          </div>
+          <div class="col">
+            <input type="radio" id="round" name="round" value="round">
+            <label for="round" class="way">Roind Trip</label>    
+          </div>
+        </div>
+        <hr>
+        <label class="where">Where ?</label>
+        <div class="row">
+          <div class="form-group col-6">
+            <label for="from">From (Choose a city)</label>
+            <select id="from" class="form-control">
+              <option selected>Choose...</option>
+              <option>São Paulo Airport GRU</option>
+              <option>Kennedy International Airport JFK</option>
+            </select>    
+          </div>
+          <div class="form-group col-6">
+            <label for="to">To (Choose a city)</label>
+            <select id="to" class="form-control">
+              <option selected>Choose...</option>
+              <option>Kennedy International Airport JFK</option>
+              <option>São Paulo Airport GRU</option>
+            </select>    
+          </div>
+        </div>
+        <hr>
+        <label class="where">When ?</label>
+        <div class="row">
+          <div class="form-group col-6">
+            <label for="from">From Date</label>
+            <input type="date" placeholder="dd-mm-yyyy" value="" class="form-control">     
+          </div>
+          <div class="form-group col-6">
+            <label for="to">To Date</label>
+            <input type="date" placeholder="dd-mm-yyyy" value="" class="form-control">    
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="form-group col">
+            <label for="adult">Adults (12+ year)</label>
+            <select id="adult" class="form-control">
+              <option selected>Choose...</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>    
+          </div>
+          <div class="form-group col">
+            <label for="child">Children (0-1 year)</label>
+            <select id="child" class="form-control">
+              <option selected>Choose...</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>    
+          </div>
+          <div class="form-group col">
+            <label for="infant">Infants (2+ year)</label>
+            <select id="infant" class="form-control">
+              <option selected>Choose...</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>    
+          </div>
+          <div class="form-group col">
+            <label for="class">Class of Travel</label>
+            <select id="class" class="form-control">
+              <option selected>Choose...</option>
+              <option>First Class</option>
+              <option>Economy</option>
+            </select>    
+          </div>
+        </div>
+        <hr>
+        <label class="where">Search for Airlines</label>
+        <div class="row">
+          <div class="form-group col-6">
+            <label for="preference">Air Preferences</label>
+            <select id="preference" class="form-control">
+              <option selected>Choose...</option>
+              <option>US Airlines</option>
+            </select> 
+          </div>
+        </div>
+        <hr>
+        <button class="btn btn-primary" type="button" (click)="search()">Search</button>
+        <button class="btn btn-secondary reset" type="button" >Reset</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+.vl {
+    border-left: 1px solid grey;
+    height: 25px;
+    display: inline;
+}
+.ltc{
+    margin-left: 3%;
+}
+.container{
+    padding: 2%;
+    background-image: url(../../../assets/bg.jpg);
+    max-width: 95%;
+}
+.col-2{
+    width: 18.9% !important;
+}
+.date{
+    width: 109%;
+}
+.col-3{
+    width: 18% !important;
+}
+.col-1{
+    width: 5% !important;
+}
+.row2{
+    margin-right: 1rem;
+    margin-top: 1rem;
+}
+.logo{
+    width: 12% ;
+}
+.heading{
+    display: inline;
+    padding-left: 3%;
+    font-size: 25px;
+    font-weight: bold;
+}
+.navbar{
+    margin: 2rem;
+    padding: 1rem;
+}
+.fa{
+    font-size: 24px;
+}
+.fas{
+    padding-top: 30px;
+    font-size: 30px;
+}
+.date{
+}
+.details{
+    padding: 0% 2% 0% 2%;
+    
+}
+.figure-img{
+    width: 40%;
+}
+.detail{
+    display: inline-flex
+}
+.plane{
+    width: 6rem;
+    text-align: center;
+}
+.pt-4{
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+}
+.class{
+    padding-left: 20%;
+}

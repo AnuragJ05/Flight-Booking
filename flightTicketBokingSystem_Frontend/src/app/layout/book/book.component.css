@@ -1,0 +1,15 @@
+.pay{
+    float: right;
+}
+.back{
+    float: left;
+}
+.logo{
+    width: 12% ;
+}
+.heading{
+    display: inline;
+    padding-left: 3%;
+    font-size: 25px;
+    font-weight: bold;
+}
