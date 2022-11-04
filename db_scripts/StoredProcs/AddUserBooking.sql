@@ -61,45 +61,45 @@ CREATE PROCEDURE dbo."CreateUserBooking"(
 
     DECLARE _ItenraryId uuid
     SET _ItenraryId = NEWID()
-    EXEC dbo.AddBookingItenraray
-      	Itenraryid		=	_Itenraryid,
-      	Bookingid		=	_Bookingid,
-      	Pnr				=	_Pnr,
-      	From			=	_From,
-      	To				=	_To,
-      	Traveldate		=	_Traveldate,
-      	Departuretime	=	_Departuretime,
-      	Arrivaltime		=	_Arrivaltime,
-      	Journeytype		=	_Journeytype,
-      	Travel			=	_Travel,
-      	Airlinevendor	=	_Airlinevendor,
-      	Flightno		=	_Flightno,
-      	Flighttype		=	_Flighttype,
-      	Basefare		=	_Basefare,
-      	Basefare		=	_Basefare,
+    EXEC dbo.AddBookingItenraray(
+      	_Itenraryid,
+      	_Bookingid,
+      	_Pnr,
+      	_From,
+      	_To,
+      	_Traveldate,
+      	_Departuretime,
+      	_Arrivaltime,
+      	_Journeytype,
+      	_Travel,
+      	_Airlinevendor,
+      	_Flightno,
+      	_Flighttype,
+      	_Basefare,
+      	_Basefare)
 
       DECLARE _Id uuid
       SET _Id = NEWID()
-    	EXEC dbo.AddBookingPassenger
-      	Id   	       =	_Id,
-      	BookingId    = _BookingId,
-      	PassengerId  = _PassengerId,
-      	SeatNo			 = _SeatNo
+    	EXEC dbo.AddBookingPassenger(
+      	_Id,
+      	_BookingId,
+      	_PassengerId,
+      	_SeatNo)
 
 
         DECLARE _transactionId uuid
         SET _transactionId = NEWID()
-      	EXEC dbo.AddBookingTransaction
-        	Bookingid	     =	_Bookingid,
-        	Transactionid	 =	_Transactionid,
-        	Totalamount	   =	_Totalamount,
-        	CGST	         =	_CGST,
-        	SGST	         =	_SGST,
-        	ServiceCharge	 =	_ServiceCharge,
-        	GrantTotal	   =	_Granttotal,
-        	Promocode 	   =	_Promocode,
-        	PromocodeAmount=	_PromocodeAmount,
-        	PaymentType	   =	_PaymentType
+      	EXEC dbo.AddBookingTransaction(
+        	_Bookingid,
+        	_Transactionid,
+        	_Totalamount,
+        	_CGST,
+        	_SGST,
+        	_ServiceCharge,
+        	_Granttotal,
+        	_Promocode,
+        	_PromocodeAmount,
+        	_PaymentType)
 
   END
   $BODY$;

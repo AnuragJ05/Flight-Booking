@@ -56,12 +56,12 @@ CREATE PROCEDURE dbo."AddBookingTransaction"(
 
     DECLARE _IndividualPaymentId uuid
     SET _IndividualPaymentId= NEWID()
-    EXEC dbo.SetIndividualFlightPayemnt
-      IndividualPaymentId	=	_IndividualPaymentId,
-      Transactionid	=	_Transactionid,
-      FlightId	=	_FlightId,
-      BaseFare	=	_BaseFare,
-      ConvenienceFees	=	_ConvenienceFees
+    EXEC dbo.SetIndividualFlightPayemnt(
+      _IndividualPaymentId,
+      _Transactionid,
+      _FlightId,
+      _BaseFare,
+      _ConvenienceFees)
 
   END
   $BODY$;

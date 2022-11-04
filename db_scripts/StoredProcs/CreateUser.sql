@@ -65,11 +65,11 @@
 
   DECLARE _PasswordId uuid
   SET PasswordId = NEWID()
-    EXEC dbo.AddUserPassword
-      UserPasswordId = _PasswordId,
-      UserId         = _UserId,
-      PasswordHash   = _PasswordHash,
-  	createdDate    = _CreatedDate
+    EXEC dbo.AddUserPassword(
+     _PasswordId,
+     _UserId,
+     _PasswordHash,
+  	 _CreatedDate)
 
   END
   $BODY$;
